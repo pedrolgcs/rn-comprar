@@ -1,12 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import {  Text, View } from 'react-native';
+import {  Image, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles'
+import { Button } from '@/components/ui/button';
 
 export function Home() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <Image source={require("@/assets/logo.png")} style={styles.logo} />
+    
+        <Button>Adicionar</Button>
+      </View>
+    </SafeAreaView>
   );
 }

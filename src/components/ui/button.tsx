@@ -1,16 +1,25 @@
+import type { ReactNode } from 'react';
 import {
-  Text,
   TouchableOpacity,
   TouchableOpacityProps,
   StyleSheet,
+  Text,
 } from 'react-native';
 
-type ButtonProps = TouchableOpacityProps;
+type ButtonProps = TouchableOpacityProps & {
+  text?: string;
+  icon?: ReactNode;
+};
 
-export function Button({ children, ...rest }: ButtonProps) {
+export function Button({ text, icon, style, ...rest }: ButtonProps) {
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.8} {...rest}>
-      <Text style={styles.text}>{children}</Text>
+    <TouchableOpacity
+      style={[styles.container, style]}
+      activeOpacity={0.8}
+      {...rest}
+    >
+      {text && <Text style={styles.text}>{text}</Text>}
+      {icon && icon}
     </TouchableOpacity>
   );
 }
@@ -24,6 +33,7 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
   },
   text: {
     color: '#fff',

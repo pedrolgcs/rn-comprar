@@ -2,6 +2,7 @@ import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import { FilterStatus } from '../types/filter-status';
 import { StatusIcon } from './status-icon';
+import { Undo2Icon } from 'lucide-react-native';
 
 const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
 
@@ -11,14 +12,8 @@ type FiltersProps = {
 };
 
 export function Filters({ activeFilter, changeFilter }: FiltersProps) {
-  const handleChangeFilter = (filter: FilterStatus) => {
-    changeFilter(filter);
-  };
-
-  const handleClearFilter = () => changeFilter(null);
-
   return (
-    <View style={styles.container}>
+    <View style={styles.filters}>
       {FILTER_STATUS.map(filter => {
         const isActive = activeFilter === filter;
 
@@ -26,14 +21,14 @@ export function Filters({ activeFilter, changeFilter }: FiltersProps) {
           <TouchableOpacity
             key={filter}
             style={[
-              styles.filterBntContainer,
-              isActive && styles.filterBntActive,
+              styles.filters__item,
+              isActive && styles['filters__item--active'],
             ]}
             activeOpacity={0.8}
-            onPress={() => handleChangeFilter(filter)}
+            onPress={() => changeFilter(filter)}
           >
             <StatusIcon status={filter} />
-            <Text style={styles.filterBntTitle}>
+            <Text style={styles.filters__itemText}>
               {filter === FilterStatus.DONE ? 'Comprados' : 'Pendentes'}
             </Text>
           </TouchableOpacity>
@@ -41,17 +36,18 @@ export function Filters({ activeFilter, changeFilter }: FiltersProps) {
       })}
 
       <TouchableOpacity
-        style={styles.clearButton}
-        onPress={() => handleClearFilter()}
+        style={styles.filters__clearButton}
+        onPress={() => changeFilter(null)}
       >
-        <Text style={styles.clearText}>Limpar</Text>
+        <Text style={styles.filters__clearText}>Limpar</Text>
+        <Undo2Icon size={18} color="#e17100" />
       </TouchableOpacity>
     </View>
   );
 }
 
 export const styles = StyleSheet.create({
-  container: {
+  filters: {
     width: '100%',
     flexDirection: 'row',
     gap: 12,
@@ -60,7 +56,8 @@ export const styles = StyleSheet.create({
     borderBottomColor: '#e4e6ec',
     paddingBottom: 12,
   },
-  filterBntContainer: {
+
+  filters__item: {
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 2,
@@ -70,21 +67,31 @@ export const styles = StyleSheet.create({
     gap: 6,
     opacity: 0.5,
   },
-  filterBntActive: {
+
+  'filters__item--active': {
     opacity: 1,
     borderColor: '#999',
     borderWidth: 1,
   },
-  filterBntTitle: {
+
+  filters__itemText: {
     fontSize: 12,
-    fontWeight: 600,
+    fontWeight: '600',
   },
-  clearButton: {
+
+  filters__clearButton: {
     marginLeft: 'auto',
+    padding: 8,
+    gap: 6,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: '#e17100',
+    flexDirection: 'row',
   },
-  clearText: {
+
+  filters__clearText: {
     fontSize: 12,
-    color: '#444',
-    fontWeight: 600,
+    color: '#e17100',
+    fontWeight: '600',
   },
 });

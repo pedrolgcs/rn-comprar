@@ -1,13 +1,15 @@
 import { View, StyleSheet } from 'react-native';
 
 import { FilterStatus } from '../types/filter-status';
-import { FilterList } from './filter-list';
+import { Filters } from './filters';
+import { useState } from 'react';
 
 export function ListTodo() {
+  const [filter, setFilter] = useState<FilterStatus | null>(FilterStatus.DONE);
+
   return (
     <View style={styles.content}>
-      <FilterList status={FilterStatus.DONE} isActive />
-      <FilterList status={FilterStatus.PENDING} isActive={false} />
+      <Filters activeFilter={filter} changeFilter={setFilter} />
     </View>
   );
 }

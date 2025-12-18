@@ -8,7 +8,7 @@ type StatusIconProps = {
   status: FilterStatus
 }
 
-export function StatusIcon({status}: StatusIconProps) {
+export function StatusIcon({ status }: StatusIconProps) {
   return (
     <Fragment>
       {status === FilterStatus.DONE ? (

@@ -60,7 +60,7 @@ export const styles = StyleSheet.create({
   filters__item: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 2,
+    borderWidth: 1,
     padding: 8,
     borderRadius: 8,
     borderColor: '#e4e6ec',

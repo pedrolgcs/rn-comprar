@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { View } from "react-native";
-
-import { styles } from './styles'
+import { View, StyleSheet } from "react-native";
 
 export function CreateTodo() {
   return (
@@ -12,3 +10,11 @@ export function CreateTodo() {
     </View>
   )
 }
+
+export const styles = StyleSheet.create({
+  form: {
+    width: "100%",
+    gap: 12,
+    paddingHorizontal: 24,
+  }
+});

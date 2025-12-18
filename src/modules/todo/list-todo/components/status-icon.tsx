@@ -1,7 +1,8 @@
-import { CircleCheck, CircleDashed } from "lucide-react-native"
-import { FilterStatus } from "../types/filter-status"
 import { Fragment } from "react"
 import { StyleSheet } from "react-native"
+import { CircleCheck, CircleDashed } from "lucide-react-native"
+
+import { FilterStatus } from "../types/filter-status"
 
 type StatusIconProps = {
   status: FilterStatus

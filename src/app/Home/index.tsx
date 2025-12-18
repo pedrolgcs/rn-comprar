@@ -1,8 +1,9 @@
 import {  Image, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { styles } from './styles'
+
 import { CreateTodo } from '@/modules/todo/create-todo';
 import { ListTodo } from '@/modules/todo/list-todo';
+import { styles } from './styles'
 
 export function Home() {
   return (

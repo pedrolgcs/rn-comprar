@@ -1,4 +1,5 @@
 import { Text, TouchableOpacity, type TouchableOpacityProps, StyleSheet } from 'react-native'
+
 import { FilterStatus } from '../types/filter-status'
 import { StatusIcon } from './status-icon'
 

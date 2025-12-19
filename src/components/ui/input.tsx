@@ -3,7 +3,13 @@ import { TextInput, TextInputProps, StyleSheet } from 'react-native';
 type InputProps = TextInputProps;
 
 export function Input(props: InputProps) {
-  return <TextInput {...props} style={styles.container} />;
+  return (
+    <TextInput
+      {...props}
+      style={styles.container}
+      placeholderTextColor="#74798b"
+    />
+  );
 }
 
 export const styles = StyleSheet.create({

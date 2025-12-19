@@ -14,7 +14,11 @@ export function TodoItem({ data }: TodoItemProps) {
 
   return (
     <View style={styles.todo}>
-      <TouchableOpacity activeOpacity={0.8} onPress={() => toggleTodo(data.id)}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => toggleTodo(data.id)}
+        style={styles.toggleBnt}
+      >
         <StatusIcon status={data.status} />
       </TouchableOpacity>
 
@@ -32,6 +36,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+  },
+  toggleBnt: {
+    paddingHorizontal: 6,
+    paddingVertical: 4,
   },
   todo__title: {
     flex: 1,

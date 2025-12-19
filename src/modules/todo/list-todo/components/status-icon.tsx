@@ -1,17 +1,16 @@
 import { Fragment } from 'react';
 import { StyleSheet } from 'react-native';
 import { CircleCheck, CircleDashed } from 'lucide-react-native';
-
-import { FilterStatus } from '../types/filter-status';
+import { TodoStatus } from '@/entities/todo';
 
 type StatusIconProps = {
-  status: FilterStatus;
+  status: TodoStatus;
 };
 
 export function StatusIcon({ status }: StatusIconProps) {
   return (
     <Fragment>
-      {status === FilterStatus.DONE ? (
+      {status === TodoStatus.DONE ? (
         <CircleCheck size={18} />
       ) : (
         <CircleDashed size={18} />

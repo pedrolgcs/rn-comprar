@@ -1,14 +1,14 @@
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import { TodoStatus } from '@/entities/todo';
 
-import { FilterStatus } from '../types/filter-status';
 import { StatusIcon } from './status-icon';
 import { Undo2Icon } from 'lucide-react-native';
 
-const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
+const FILTER_STATUS: TodoStatus[] = [TodoStatus.PENDING, TodoStatus.DONE];
 
 type FiltersProps = {
-  activeFilter: FilterStatus | null;
-  changeFilter: (filter: FilterStatus | null) => void;
+  activeFilter: TodoStatus | null;
+  changeFilter: (filter: TodoStatus | null) => void;
 };
 
 export function Filters({ activeFilter, changeFilter }: FiltersProps) {
@@ -29,7 +29,7 @@ export function Filters({ activeFilter, changeFilter }: FiltersProps) {
           >
             <StatusIcon status={filter} />
             <Text style={styles.filters__itemText}>
-              {filter === FilterStatus.DONE ? 'Comprados' : 'Pendentes'}
+              {filter === TodoStatus.DONE ? 'Comprados' : 'Pendentes'}
             </Text>
           </TouchableOpacity>
         );

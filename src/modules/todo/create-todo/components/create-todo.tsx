@@ -1,10 +1,11 @@
-import { View, StyleSheet, Alert } from 'react-native';
+import { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { PlusIcon } from 'lucide-react-native';
+import { toast } from 'sonner-native';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { PlusIcon } from 'lucide-react-native';
 import { useAppStore } from '@/storage';
-import { useState } from 'react';
 
 export function CreateTodo() {
   const [title, setTitle] = useState('');
@@ -13,17 +14,12 @@ export function CreateTodo() {
 
   const handleAddTodo = () => {
     if (!title) {
-      Alert.alert('Atenção', 'É necessário preencher da sua compra', [
-        {
-          text: 'OK',
-          onPress: () => console.log('OK Pressed'),
-        },
-      ]);
-
+      toast.error('É necessário preencher a compra');
       return;
     }
 
     addTodo(title);
+    toast.success('Compra adicionada com sucesso!');
     setTitle('');
   };
 

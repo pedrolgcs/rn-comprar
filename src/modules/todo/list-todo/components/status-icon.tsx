@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import { StyleSheet } from 'react-native';
 import { CircleCheck, CircleDashed } from 'lucide-react-native';
 import { TodoStatus } from '@/entities/todo';
 
@@ -18,5 +17,3 @@ export function StatusIcon({ status }: StatusIconProps) {
     </Fragment>
   );
 }
-
-export const styles = StyleSheet.create({});

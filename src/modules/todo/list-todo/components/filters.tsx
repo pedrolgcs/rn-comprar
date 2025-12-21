@@ -46,7 +46,7 @@ export function Filters({ activeFilter, changeFilter }: FiltersProps) {
   );
 }
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   filters: {
     width: '100%',
     flexDirection: 'row',

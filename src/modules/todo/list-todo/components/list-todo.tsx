@@ -35,7 +35,7 @@ export function ListTodo() {
   );
 }
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   content: {
     flex: 1,
     width: '100%',

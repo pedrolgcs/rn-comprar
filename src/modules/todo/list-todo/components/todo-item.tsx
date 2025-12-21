@@ -31,7 +31,7 @@ export function TodoItem({ data }: TodoItemProps) {
   );
 }
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   todo: {
     flexDirection: 'row',
     alignItems: 'center',

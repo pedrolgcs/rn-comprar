@@ -13,14 +13,14 @@ export function CreateTodo() {
   const addTodo = useAppStore(state => state.addTodo);
 
   const handleAddTodo = () => {
-    if (!title) {
+    if (!title.trim()) {
       toast.error('É necessário preencher a compra');
       return;
     }
 
     addTodo(title);
-    toast.success('Compra adicionada com sucesso!');
     setTitle('');
+    toast.success('Compra adicionada com sucesso!');
   };
 
   return (

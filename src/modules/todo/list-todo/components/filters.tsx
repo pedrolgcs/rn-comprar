@@ -1,17 +1,34 @@
-import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View, Alert } from 'react-native';
 import { TodoStatus } from '@/entities/todo';
 
 import { StatusIcon } from './status-icon';
-import { Undo2Icon } from 'lucide-react-native';
+import { Trash2Icon } from 'lucide-react-native';
+import { useAppStore } from '@/storage';
 
 const FILTER_STATUS: TodoStatus[] = [TodoStatus.PENDING, TodoStatus.DONE];
 
 type FiltersProps = {
   activeFilter: TodoStatus | null;
-  changeFilter: (filter: TodoStatus | null) => void;
+  changeFilter: (filter: TodoStatus) => void;
 };
 
 export function Filters({ activeFilter, changeFilter }: FiltersProps) {
+  const todos = useAppStore(state => state.todos);
+
+  const isEmptyList = todos.length === 0;
+
+  const clearTodos = useAppStore(state => state.clearTodos);
+
+  const handleClearTodos = () => {
+    Alert.alert('Limpar lista', 'Deseja remover todos os itens da lista ?', [
+      {
+        text: 'Cancelar',
+        style: 'cancel',
+      },
+      { text: 'OK', onPress: () => clearTodos() },
+    ]);
+  };
+
   return (
     <View style={styles.filters}>
       {FILTER_STATUS.map(filter => {
@@ -36,11 +53,15 @@ export function Filters({ activeFilter, changeFilter }: FiltersProps) {
       })}
 
       <TouchableOpacity
-        style={styles.filters__clearButton}
-        onPress={() => changeFilter(null)}
+        style={[
+          styles.filters__clearButton,
+          isEmptyList && styles['filters__clearButton--disabled'],
+        ]}
+        onPress={() => handleClearTodos()}
+        disabled={todos.length === 0}
       >
         <Text style={styles.filters__clearText}>Limpar</Text>
-        <Undo2Icon size={18} color="#e17100" />
+        <Trash2Icon size={18} color="#e17100" />
       </TouchableOpacity>
     </View>
   );
@@ -88,7 +109,9 @@ const styles = StyleSheet.create({
     borderColor: '#e17100',
     flexDirection: 'row',
   },
-
+  'filters__clearButton--disabled': {
+    opacity: 0.4,
+  },
   filters__clearText: {
     fontSize: 12,
     color: '#e17100',

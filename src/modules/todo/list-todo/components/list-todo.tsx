@@ -7,7 +7,7 @@ import { TodoItem } from './todo-item';
 import { useAppStore } from '@/storage';
 
 export function ListTodo() {
-  const [filter, setFilter] = useState<TodoStatus | null>(null);
+  const [filter, setFilter] = useState<TodoStatus>(TodoStatus.PENDING);
 
   const todos = useAppStore(state => state.todos);
 

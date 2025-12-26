@@ -5,7 +5,7 @@ import { type StateCreator } from 'zustand';
 import { Todo, TodoStatus } from '@/entities/todo';
 
 type State = {
-  todos: Todo[];
+  todos: Array<Todo>;
   isHydrated: boolean;
 };
 

@@ -15,9 +15,9 @@ type FiltersProps = {
 export function Filters({ activeFilter, changeFilter }: FiltersProps) {
   const todos = useAppStore(state => state.todos);
 
-  const isEmptyList = todos.length === 0;
-
   const clearTodos = useAppStore(state => state.clearTodos);
+
+  const isEmptyList = todos.length === 0;
 
   const handleClearTodos = () => {
     Alert.alert('Limpar lista', 'Deseja remover todos os itens da lista ?', [
@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#e4e6ec',
     paddingBottom: 12,
   },
-
   filters__item: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -88,18 +87,15 @@ const styles = StyleSheet.create({
     gap: 6,
     opacity: 0.5,
   },
-
   'filters__item--active': {
     opacity: 1,
     borderColor: '#999',
     borderWidth: 1,
   },
-
   filters__itemText: {
     fontSize: 12,
     fontWeight: '600',
   },
-
   filters__clearButton: {
     marginLeft: 'auto',
     padding: 8,
